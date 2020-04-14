@@ -1,13 +1,16 @@
-echo "Getting latest master"
-git checkout master
-git pull
-if [ "$2" = "tagRelease" ]
+if [ "$1" != "current" ]
 then
-    echo "Creating tag $1"
-    git tag $1
-    git push origin --tags --no-verify
-else 
-    git checkout $1
+    echo "Getting latest master"
+    git checkout master
+    git pull
+    if [ "$2" = "tagRelease" ]
+    then
+        echo "Creating tag $1"
+        git tag $1
+        git push origin --tags --no-verify
+    else 
+        git checkout $1
+    fi
 fi
 echo "About to deploy release $1"
 echo "jhipster-registry"
