@@ -8,13 +8,13 @@ then
         echo "Creating tag $1"
         git tag $1
         git push origin --tags --no-verify
-    else 
+    else
         git checkout $1
     fi
 fi
 echo "About to deploy release $1"
 echo "gateway"
-cd ../gateway
+cd gateway
 bash mvnw clean
 bash mvnw -ntp -Pdev verify jib:dockerBuild -Drelease.tag=$1
 echo "oauth2-service"
