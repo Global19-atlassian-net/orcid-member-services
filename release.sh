@@ -13,10 +13,6 @@ then
     fi
 fi
 echo "About to deploy release $1"
-echo "jhipster-registry"
-cd jhipster-registry
-bash mvnw clean
-bash mvnw -ntp -Pdev verify jib:dockerBuild -Drelease.tag=$1
 echo "gateway"
 cd ../gateway
 bash mvnw clean
